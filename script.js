@@ -1,4 +1,5 @@
-// Assignment Code
+// This is original code given out with the assignment. It is used to create the var generateBtn, which is later used to 
+// create a listener to monitor for clicks. I chose to leave this in it's original location, at the top of the code.
 var generateBtn = document.querySelector("#generate");
 
 // The first step is creating functions that provide random characters of specific types.
@@ -23,7 +24,7 @@ function randomSpecialChar() {
   return specialCharacters[Math.floor(Math.random() * specialCharacters.length)];
 }
 
-// Write password to the #password input
+// The writePassword() function does all of the work from here
 function writePassword() {
   passwordLength = prompt("How long would you like your password to be? Please type your response as an integer between 8 & 128.");
 
@@ -38,11 +39,11 @@ function writePassword() {
     lowercaseYN = confirm("Would you like the password to include lowercase letters? Press OK for yes, or press Cancel for no.");
     uppercaseYN = confirm("Would you like the password to include uppercase letters? Press OK for yes, or press Cancel for no.");
     numbersYN = confirm("Would you like the password to include numbers? Press OK for yes, or press Cancel for no.");
-    specialCharsYN = confirm("Would you like the password to include special characters (ex: !@#$, etc.) letters? Press Okay for yes, or press Cancel for no.");
+    specialCharsYN = confirm("Would you like the password to include special characters? Press OK for yes, or press Cancel for no.");
 
     // Below is another test to confirm that the user selected at least one type of character in the preceeding 4 prompts
     if (lowercaseYN === false && uppercaseYN === false && numbersYN === false && specialCharsYN === false) {
-      alert("You did not say yes to any of the character options. Please refresh your browser, then select yes for at least one character type.")
+      alert("You did not press OK for any of the character types. Please press Generate Password again, then select OK for at least one character type.")
     } else {
       // This function does the main magic of creating a new password, but only after we've validated that we have valid inputs from the user
       function generatePassword(length, lowercase, uppercase, numbers, specialCharacters) {
@@ -66,13 +67,14 @@ function writePassword() {
           characterTypes.push("specialCharactersTrue");
         }
 
-        // This empty array is needed for the next for loop
+        // This empty array is needed for the next for loop.
         var passwordCharArray = [];
 
-        // The best way I found to created a new password was to first create a new array with randomly generated characters each in their own index spot
-        // Directly after this loop, you'll see another loop that concatenates this array into a string called newPassword
+        // The best way I found to create a new password was to first create a new array with randomly generated characters each in their own index spot.
+        // Directly after this loop, you'll see another loop that concatenates this array into a string called newPassword.
         for (var i = 0; i < length; i++) {
-          // These vars are setup to select a random character type from the characterTypes array we created at the start of generatePassword()
+
+          // These vars are setup to select a random character type from the characterTypes array we created at the start of generatePassword().
           var randomCharacterType = Math.floor(Math.random() * characterTypes.length);
           var charTypeSelected = characterTypes[randomCharacterType];
 
@@ -107,6 +109,7 @@ function writePassword() {
     }
   }
 
+  // Write password to the #password input
   var password = generatePassword(passwordLength, lowercaseYN, uppercaseYN, numbersYN, specialCharsYN);
   var passwordText = document.querySelector("#password");
 
