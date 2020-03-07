@@ -8,6 +8,26 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// testing area:
+// 97-122 are lowercase letters in String.fromCharCode()
+// This code generates a random lowercase letter
+console.log(String.fromCharCode(Math.floor(Math.random() * 26) + 97));
+
+// 65-90 are uppercase letters in String.fromCharCode()
+// This code generates a random uppercase letter
+console.log(String.fromCharCode(Math.floor(Math.random() * 26) + 65));
+
+// 48-57 are the numbers 0-9 in String.fromCharCode()
+// This code generates a random number 0-9
+console.log(String.fromCharCode(Math.floor(Math.random() * 10) + 48));
+
+function randomSpecialChar() {
+  const specialCharacters = "!@#$%^&*(){}[]=+-\/";
+  return specialCharacters[Math.floor(Math.random() * specialCharacters.length)];
+}
+
+console.log(randomSpecialChar());
+
 // Write password to the #password input
 function writePassword() {
   // WHEN I click the button to generate a password
@@ -25,8 +45,8 @@ function writePassword() {
   firstResponse = confirm("Can you hear me?");
   passwordLength = prompt("How long would you like your password to be? Please type your response as an integer between 8 & 128.");
   lowercaseYN = confirm("Would you like the password to include lowercase letters? Press OK for yes, or press Cancel for no.");
-  uppercaseYN = confirm("Would you like the password to include UPPERcase letters? Press OK for yes, or press Cancel for no.");
-  numbersYN = confirm("Would you like the password to include numbers? OK = yes; CANCEL = no.");
+  uppercaseYN = confirm("Would you like the password to include uppercase letters? Press OK for yes, or press Cancel for no.");
+  numbersYN = confirm("Would you like the password to include numbers? Press OK for yes, or press Cancel for no.");
   specialCharsYN = confirm("Would you like the password to include special characters (ex: !@#$, etc.) letters? Press Okay for yes, or press Cancel for no.");
 
   console.log("writePassword function can hear you: " + firstResponse);
@@ -47,14 +67,21 @@ function writePassword() {
   // WHEN all prompts are answered
   // THEN a password is generated that matches the selected criteria
 
-  // WHEN the password is generated
-  // THEN the password is either displayed in an alert or written to the page
-
-  var password = generatePassword();
+  // COMMENTED OUT BUT USING var password = generatePassword();
+  // var password = generatePassword() {
+    
+  //   if (lowerCaseYN) {
+  //     newPassword.push()
+  //   }
+  // }
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
+  // WHEN the password is generated
+  // THEN the password is either displayed in an alert or written to the page
+
+  alert("Your new password is: " + password);
 
 }
 
